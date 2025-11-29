@@ -1,0 +1,323 @@
+/* Main App Container - Full viewport layout */
+.App {
+  min-height: 100vh;      /* Minimum full viewport height */
+  width: 100vw;           /* Full viewport width */
+  margin: 0;              /* Remove default margins */
+  padding: 0;             /* Remove default padding */
+  overflow-x: hidden;     /* Prevent horizontal scrolling */
+  box-sizing: border-box; /* Include padding/border in width calculations */
+  display: flex;          /* Use flexbox for layout */
+  flex-direction: column; /* Stack children vertically */
+}
+
+/* Content Area - Grows to fill available space above footer */
+.app-content {
+  flex: 1; /* Grow to fill remaining space (pushes footer to bottom) */
+}
+
+/* Loading State - Shown while app initializes */
+.loading-container {
+  display: flex;              /* Use flexbox for centering */
+  flex-direction: column;     /* Stack spinner and text vertically */
+  justify-content: center;    /* Center vertically */
+  align-items: center;        /* Center horizontally */
+  min-height: 100vh;          /* Take full viewport height */
+  gap: var(--spacing-md);     /* Space between spinner and text */
+}
+
+/* Loading Spinner - Animated rotating circle */
+.spinner {
+  width: 50px;                              /* Set spinner size */
+  height: 50px;
+  border: 4px solid var(--pale-green);     /* Light green border */
+  border-top: 4px solid var(--primary-green); /* Dark green accent */
+  border-radius: 50%;                       /* Make it circular */
+  animation: spin 1s linear infinite;       /* Continuous rotation */
+}
+
+/* Keyframe animation for spinner rotation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }     /* Start at 0 degrees */
+  100% { transform: rotate(360deg); } /* Complete full rotation */
+}
+
+/* Common Button Styles - Base button styling applied to all buttons */
+.btn {
+  padding: 12px 24px;                    /* Comfortable padding for touch targets */
+  border: none;                          /* Remove default border */
+  border-radius: var(--radius-md);       /* Rounded corners using design system */
+  font-size: 16px;                       /* Readable font size */
+  font-weight: 600;                      /* Semi-bold weight for emphasis */
+  cursor: pointer;                       /* Show hand cursor on hover */
+  transition: all var(--transition-fast); /* Smooth transitions for interactions */
+  text-decoration: none;                 /* Remove underlines when used as links */
+  display: inline-block;                 /* Allow transforms and margins */
+  text-align: center;                    /* Center text within button */
+}
+
+/* Primary Button - Main call-to-action style */
+.btn-primary {
+  background-color: var(--primary-green); /* Green background */
+  color: var(--white);                    /* White text for contrast */
+}
+
+/* Primary button hover state - More prominent on interaction */
+.btn-primary:hover {
+  background-color: var(--secondary-green); /* Darker green on hover */
+  transform: translateY(-2px);              /* Lift effect */
+  box-shadow: var(--shadow-md);             /* Add shadow for depth */
+}
+
+/* Primary button active state - Pressed effect */
+.btn-primary:active {
+  transform: translateY(0); /* Return to normal position when clicked */
+}
+
+/* Secondary Button - Less prominent than primary */
+.btn-secondary {
+  background-color: var(--light-green); /* Lighter green background */
+  color: var(--white);                  /* White text */
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent-green); /* Brighter green on hover */
+}
+
+/* Outline Button - Hollow style for secondary actions */
+.btn-outline {
+  background-color: transparent;         /* No background fill */
+  color: var(--primary-green);          /* Green text */
+  border: 2px solid var(--primary-green); /* Green border */
+}
+
+/* Outline button hover - Fills with color */
+.btn-outline:hover {
+  background-color: var(--primary-green); /* Fill with green */
+  color: var(--white);                    /* White text for contrast */
+}
+
+/* Danger Button - For destructive actions */
+.btn-danger {
+  background-color: var(--error); /* Red background for warnings */
+  color: var(--white);            /* White text */
+}
+
+.btn-danger:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Disabled Button State - Non-interactive appearance */
+.btn:disabled {
+  opacity: 0.6;           /* Reduce opacity to show disabled state */
+  cursor: not-allowed;    /* Show disabled cursor */
+}
+
+.btn:disabled:hover {
+  transform: none; /* Disable hover effects when disabled */
+}
+
+/* Card Styles */
+.card {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  transition: border-color var(--transition-fast);
+  font-family: inherit;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-green);
+}
+
+.form-input::placeholder {
+  color: var(--gray);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-error {
+  color: var(--error);
+  font-size: 14px;
+  margin-top: var(--spacing-xs);
+}
+
+/* Badge Styles */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-lg);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-success {
+  background-color: var(--pale-green);
+  color: var(--dark-green);
+}
+
+.badge-warning {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.badge-info {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+}
+
+/* Alert Styles */
+.alert {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
+  animation: fadeIn var(--transition-normal);
+}
+
+.alert-success {
+  background-color: var(--pale-green);
+  color: var(--dark-green);
+  border-left: 4px solid var(--success);
+}
+
+.alert-error {
+  background-color: #ffebee;
+  color: #c62828;
+  border-left: 4px solid var(--error);
+}
+
+.alert-info {
+  background-color: #e3f2fd;
+  color: #1565c0;
+  border-left: 4px solid var(--info);
+}
+
+/* Responsive Grid */
+.grid {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn var(--transition-fast);
+}
+
+.modal {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideIn var(--transition-normal);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--light-gray);
+}
+
+.modal-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-green);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--gray);
+  transition: color var(--transition-fast);
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  color: var(--text-dark);
+}

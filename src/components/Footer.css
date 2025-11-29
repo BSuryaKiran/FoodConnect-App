@@ -1,0 +1,194 @@
+/* Footer - Dark footer section with links and branding */
+.footer {
+  background: var(--text-dark);             /* Dark background */
+  color: var(--white);                      /* White text for contrast */
+  padding: var(--spacing-xl) 0 var(--spacing-lg); /* Large top, smaller bottom padding */
+  margin-top: auto;                         /* Push to bottom of flex container */
+}
+
+/* Footer Content Layout - Grid with brand and links */
+.footer-content {
+  display: grid;                    /* CSS Grid layout */
+  grid-template-columns: 1fr 2fr;   /* Brand takes 1/3, links take 2/3 */
+  gap: var(--spacing-xl);           /* Large gap between sections */
+  margin-bottom: var(--spacing-lg); /* Space above bottom copyright */
+}
+
+/* Footer Brand Section - Logo and tagline */
+.footer-brand {
+  display: flex;              /* Flexbox for logo and text */
+  align-items: center;        /* Vertically center items */
+  gap: var(--spacing-sm);     /* Small gap between logo and text */
+}
+
+/* Footer Logo - Plant emoji */
+.footer-logo {
+  font-size: 32px; /* Large size for visual impact */
+}
+
+/* Footer Brand Title */
+.footer-brand h3 {
+  color: var(--accent-green); /* Green color for brand consistency */
+  margin: 0;                  /* Remove default margin */
+  font-size: 20px;            /* Prominent but not overwhelming */
+}
+
+/* Footer Brand Tagline */
+.footer-brand p {
+  margin: 0;        /* Remove default margin */
+  opacity: 0.8;     /* Slightly transparent for subtle appearance */
+  font-size: 14px;  /* Smaller text for tagline */
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.footer-column h4 {
+  color: var(--accent-green);
+  margin-bottom: var(--spacing-md);
+  font-size: 16px;
+}
+
+.footer-column a {
+  display: block;
+  color: var(--white);
+  text-decoration: none;
+  opacity: 0.8;
+  padding: var(--spacing-xs) 0;
+  transition: opacity var(--transition-fast);
+  cursor: pointer;
+}
+
+.footer-column a:hover {
+  opacity: 1;
+  color: var(--accent-green);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: var(--spacing-lg);
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0;
+  opacity: 0.8;
+  font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Dialog Styles */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.dialog-content {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 0;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  animation: fadeInScale 0.3s ease-out;
+}
+
+.dialog-header {
+  background: linear-gradient(135deg, var(--pale-green) 0%, var(--white) 100%);
+  padding: var(--spacing-lg);
+  text-align: center;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.dialog-icon {
+  font-size: 48px;
+  margin-bottom: var(--spacing-md);
+}
+
+.dialog-header h3 {
+  color: var(--text-dark);
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.dialog-body {
+  padding: var(--spacing-lg);
+  color: var(--text-dark);
+}
+
+.dialog-footer {
+  padding: var(--spacing-md) var(--spacing-lg);
+  text-align: center;
+  border-top: 1px solid var(--light-gray);
+  background: var(--bg-light);
+  border-radius: 0 0 12px 12px;
+}
+
+.dialog-footer .btn {
+  min-width: 100px;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: var(--spacing-lg) 0 var(--spacing-md);
+  }
+  
+  .dialog-content {
+    width: 95%;
+    max-height: 85vh;
+  }
+  
+  .dialog-header {
+    padding: var(--spacing-md);
+  }
+  
+  .dialog-body {
+    padding: var(--spacing-md);
+  }
+  
+  .dialog-icon {
+    font-size: 36px;
+  }
+  
+  .dialog-header h3 {
+    font-size: 20px;
+  }
+}

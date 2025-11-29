@@ -1,0 +1,240 @@
+/* Login Page Container - Full height layout with gradient background */
+.login-container {
+  min-height: 100vh;        /* Full viewport height */
+  display: flex;            /* Flexbox layout */
+  flex-direction: column;   /* Stack header, main, footer vertically */
+  /* Same gradient as hero section for consistency */
+  background: linear-gradient(135deg, var(--pale-green) 0%, var(--white) 50%, var(--pale-green) 100%);
+}
+
+/* Login Header - Logo and branding area */
+.login-header {
+  text-align: center;                           /* Center align content */
+  padding: var(--spacing-xl) var(--spacing-md) var(--spacing-lg); /* Generous padding */
+  animation: fadeIn var(--transition-slow);     /* Fade in animation */
+  position: relative;                           /* For absolute positioned children */
+}
+
+/* Navigation area with back button */
+.header-nav {
+  position: absolute;           /* Position absolutely within header */
+  top: var(--spacing-md);       /* Distance from top */
+  left: var(--spacing-md);      /* Distance from left */
+}
+
+.back-home-btn {
+  background: none;
+  border: none;
+  color: var(--primary-green);
+  font-size: 14px;
+  cursor: pointer;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.back-home-btn:hover {
+  background: var(--pale-green);
+  transform: translateX(-2px);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.logo-icon {
+  font-size: 48px;
+  animation: pulse 2s infinite;
+}
+
+.logo h1 {
+  font-size: 32px;
+  color: var(--primary-green);
+  font-weight: 700;
+}
+
+.tagline {
+  color: var(--dark-gray);
+  font-size: 18px;
+}
+
+/* Main Content */
+.login-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 var(--spacing-md) var(--spacing-xl);
+  gap: var(--spacing-xl);
+}
+
+/* Login Card */
+.login-card {
+  width: 100%;
+  max-width: 450px;
+  animation: fadeIn var(--transition-slow) 0.2s;
+}
+
+.login-title {
+  font-size: 28px;
+  color: var(--primary-green);
+  margin-bottom: var(--spacing-xs);
+  font-weight: 700;
+}
+
+.login-subtitle {
+  color: var(--gray);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* User Type Selector - Toggle between Donor and Seeker roles */
+.user-type-selector {
+  display: grid;                      /* CSS Grid layout */
+  grid-template-columns: 1fr 1fr;     /* Two equal columns */
+  gap: var(--spacing-sm);             /* Small gap between buttons */
+  margin-bottom: var(--spacing-lg);   /* Space below selector */
+}
+
+/* Individual type selection button */
+.type-btn {
+  display: flex;                      /* Flexbox for icon and text */
+  flex-direction: column;             /* Stack icon above text */
+  align-items: center;                /* Center align content */
+  gap: var(--spacing-xs);             /* Small gap between icon and text */
+  padding: var(--spacing-md);         /* Comfortable padding */
+  border: 2px solid #e0e0e0;          /* Light gray border */
+  border-radius: var(--radius-md);    /* Rounded corners */
+  background-color: var(--white);     /* White background */
+  cursor: pointer;                    /* Show clickable cursor */
+  transition: all var(--transition-fast); /* Smooth transitions */
+  font-size: 16px;                    /* Readable font size */
+  font-weight: 600;                   /* Semi-bold text */
+  color: var(--text-dark);            /* Dark text color */
+}
+
+.type-btn:hover {
+  border-color: var(--light-green);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.type-btn.active {
+  border-color: var(--primary-green);
+  background-color: var(--pale-green);
+  color: var(--primary-green);
+}
+
+.type-icon {
+  font-size: 32px;
+}
+
+/* Login Form */
+.login-form {
+  margin-bottom: var(--spacing-lg);
+}
+
+.login-btn {
+  width: 100%;
+  margin-bottom: var(--spacing-sm);
+}
+
+.toggle-btn {
+  width: 100%;
+  font-size: 14px;
+}
+
+/* Success Dialog */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn var(--transition-fast);
+}
+
+.dialog-content {
+  background: var(--white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  animation: slideUp var(--transition-fast);
+}
+
+.success-icon {
+  font-size: 48px;
+  margin-bottom: var(--spacing-md);
+}
+
+.dialog-content h3 {
+  color: var(--primary-green);
+  margin-bottom: var(--spacing-lg);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.dialog-content .btn {
+  min-width: 100px;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Features Section */
+/* Responsive Design */
+@media (max-width: 768px) {
+  .logo h1 {
+    font-size: 24px;
+  }
+
+  .logo-icon {
+    font-size: 36px;
+  }
+
+  .tagline {
+    font-size: 16px;
+  }
+
+  .login-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-header {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+
+  .login-main {
+    padding: 0 var(--spacing-sm) var(--spacing-lg);
+  }
+
+  .user-type-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .type-btn {
+    flex-direction: row;
+    justify-content: center;
+  }
+}

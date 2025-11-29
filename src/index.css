@@ -1,0 +1,168 @@
+/* CSS Reset - Remove default browser styling for consistent appearance */
+* {
+  margin: 0;              /* Remove default margins */
+  padding: 0;             /* Remove default padding */
+  box-sizing: border-box; /* Include padding and border in element's total width/height */
+}
+
+/* CSS Custom Properties (Variables) - Define reusable values for consistent theming */
+:root {
+  /* Green Theme Colors - Food/nature-themed color palette */
+  --primary-green: #2d5016;    /* Dark green for headers, primary buttons */
+  --secondary-green: #4a7c2c;  /* Medium green for hover states */
+  --light-green: #6fa84a;      /* Lighter green for secondary elements */
+  --pale-green: #e8f5e9;       /* Very light green for backgrounds, highlights */
+  --accent-green: #81c784;     /* Bright green for accents and success states */
+  --dark-green: #1b3409;       /* Darkest green for text on light backgrounds */
+  
+  /* Neutral Colors - Grayscale colors for text, backgrounds, borders */
+  --white: #ffffff;        /* Pure white for backgrounds, text on dark */
+  --light-gray: #f5f5f5;   /* Light gray for subtle backgrounds */
+  --gray: #9e9e9e;         /* Medium gray for secondary text, placeholders */
+  --dark-gray: #424242;    /* Dark gray for body text */
+  --text-dark: #212121;    /* Darkest gray for headings, primary text */
+  
+  /* Status Colors - Semantic colors for different states and feedback */
+  --success: #4caf50;      /* Green for success messages, completed states */
+  --warning: #ff9800;      /* Orange for warnings, pending states */
+  --error: #f44336;        /* Red for errors, destructive actions */
+  --info: #2196f3;         /* Blue for informational messages */
+  
+  /* Spacing System - Consistent spacing values based on rem units */
+  --spacing-xs: 0.5rem;    /* 8px - Extra small spacing for tight layouts */
+  --spacing-sm: 1rem;      /* 16px - Small spacing for compact elements */
+  --spacing-md: 1.5rem;    /* 24px - Medium spacing for standard layouts */
+  --spacing-lg: 2rem;      /* 32px - Large spacing for generous layouts */
+  --spacing-xl: 3rem;      /* 48px - Extra large spacing for major sections */
+  
+  /* Border Radius System - Consistent rounded corner values */
+  --radius-sm: 4px;        /* Small radius for buttons, form inputs */
+  --radius-md: 8px;        /* Medium radius for cards, modals */
+  --radius-lg: 12px;       /* Large radius for containers, sections */
+  --radius-xl: 16px;       /* Extra large radius for hero elements */
+  
+  /* Shadow System - Layered shadows for depth and elevation */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);    /* Subtle shadow for form inputs */
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);   /* Medium shadow for cards */
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);   /* Strong shadow for modals, dropdowns */
+  
+  /* Transition System - Consistent animation timings */
+  --transition-fast: 0.2s ease;    /* Quick transitions for hover states */
+  --transition-normal: 0.3s ease;  /* Standard transitions for most interactions */
+  --transition-slow: 0.5s ease;    /* Slower transitions for major state changes */
+}
+
+/* Body Styles - Set default font, colors, and text rendering */
+body {
+  /* System font stack - uses the best available font for each OS */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  /* Improve font rendering on webkit browsers (Safari, Chrome) */
+  -webkit-font-smoothing: antialiased;
+  /* Improve font rendering on Firefox */
+  -moz-osx-font-smoothing: grayscale;
+  /* Set default background color using CSS variable */
+  background-color: var(--light-gray);
+  /* Set default text color */
+  color: var(--text-dark);
+  /* Set comfortable line spacing for readability */
+  line-height: 1.6;
+}
+
+/* Code block styling - monospace font stack for code elements */
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Utility Classes - Reusable helper classes */
+/* Container class - centers content with max width and responsive padding */
+.container {
+  max-width: 1200px;                /* Maximum width for large screens */
+  margin: 0 auto;                   /* Center horizontally */
+  padding: 0 var(--spacing-md);     /* Add horizontal padding */
+}
+
+/* Text alignment utility */
+.text-center {
+  text-align: center;
+}
+
+/* Margin Top Utilities - Quick classes for top margins */
+.mt-1 { margin-top: var(--spacing-xs); }    /* 8px top margin */
+.mt-2 { margin-top: var(--spacing-sm); }    /* 16px top margin */
+.mt-3 { margin-top: var(--spacing-md); }    /* 24px top margin */
+.mt-4 { margin-top: var(--spacing-lg); }    /* 32px top margin */
+
+/* Margin Bottom Utilities - Quick classes for bottom margins */
+.mb-1 { margin-bottom: var(--spacing-xs); } /* 8px bottom margin */
+.mb-2 { margin-bottom: var(--spacing-sm); } /* 16px bottom margin */
+.mb-3 { margin-bottom: var(--spacing-md); } /* 24px bottom margin */
+.mb-4 { margin-bottom: var(--spacing-lg); } /* 32px bottom margin */
+
+/* Responsive Design - Adjust spacing and layout for different screen sizes */
+@media (max-width: 768px) {
+  /* Reduce large spacing on tablets and smaller screens */
+  :root {
+    --spacing-lg: 1.5rem;  /* Reduce from 32px to 24px */
+    --spacing-xl: 2rem;    /* Reduce from 48px to 32px */
+  }
+  
+  /* Reduce container padding on smaller screens */
+  .container {
+    padding: 0 var(--spacing-sm); /* Use smaller padding */
+  }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 480px) {
+  /* Slightly smaller base font size on mobile for better fit */
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Animation Keyframes - Define reusable animations */
+/* Fade in animation with slight upward movement */
+@keyframes fadeIn {
+  from {
+    opacity: 0;                    /* Start invisible */
+    transform: translateY(10px);   /* Start 10px below final position */
+  }
+  to {
+    opacity: 1;                    /* End fully visible */
+    transform: translateY(0);      /* End at final position */
+  }
+}
+
+/* Slide in animation from left side */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%); /* Start completely off-screen to the left */
+  }
+  to {
+    transform: translateX(0);     /* End at normal position */
+  }
+}
+
+/* Pulse animation for attention-grabbing elements */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);          /* Normal size at start and end */
+  }
+  50% {
+    transform: scale(1.05);       /* Slightly larger in the middle */
+  }
+}
+
+/* Animation Utility Classes - Apply animations to elements */
+/* Fade in animation class */
+.fade-in {
+  animation: fadeIn var(--transition-normal) ease-in;
+}
+
+/* Slide in animation class */
+.slide-in {
+  animation: slideIn var(--transition-normal) ease-out;
+}
